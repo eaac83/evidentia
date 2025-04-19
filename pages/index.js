@@ -50,7 +50,7 @@ export default function Home() {
           </p>
         </section>
 
-        <Link href="/formulario">
+        <Link href="pages/formulario">
           <a style={{
             padding: '12px 24px',
             backgroundColor: '#4ADE80',
