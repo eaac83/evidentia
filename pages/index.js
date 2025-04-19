@@ -50,7 +50,7 @@ export default function Home() {
           </p>
         </section>
 
-        <Link href="pages/formulario.js">
+        <Link href="/formulario">
           <a style={{
             padding: '12px 24px',
             backgroundColor: '#4ADE80',
