@@ -9,7 +9,7 @@
   "dependencies": {
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
     "html2pdf.js": "^0.10.1"
   }
 }
