@@ -110,7 +110,7 @@ Sin esta información, la evidencia generada será genérica y no estará alinea
     localStorage.setItem("evidentia_solicitudes", JSON.stringify(registrosExistentes));
 
     localStorage.setItem("formularioData", JSON.stringify(formData));
-    router.push("/resumen");
+    router.push("/montos");
   };
 
   const total = formData.mesesSeleccionados.length * 500;
