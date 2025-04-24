@@ -7,9 +7,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "html2pdf.js": "^0.10.1"
+    "docx": "^9.4.1",
+    "next": "13.4.7",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }
