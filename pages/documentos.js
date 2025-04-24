@@ -1,58 +1,6 @@
 import { useEffect, useState } from "react";
 import jsPDF from "jspdf";
-import { obtenerTextoSimuladoIA } from "./plantillas_IA_simuladas"; // Importación real
-
-function numeroALetras(num) {
-  const unidades = ['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve'];
-  const decenas = ['','diez','veinte','treinta','cuarenta','cincuenta','sesenta','setenta','ochenta','noventa'];
-  const centenas = ['','ciento','doscientos','trescientos','cuatrocientos','quinientos','seiscientos','setecientos','ochocientos','novecientos'];
-  const especiales = ['diez','once','doce','trece','catorce','quince'];
-
-  function convertirGrupo(n) {
-    let salida = '';
-    if (n === '100') return 'cien';
-    if (n[0] !== '0') salida += centenas[parseInt(n[0])] + ' ';
-    const d = parseInt(n.substring(1));
-    if (d <= 9) salida += unidades[d];
-    else if (d <= 15) salida += especiales[d - 10];
-    else {
-      salida += decenas[parseInt(n[1])];
-      if (n[2] !== '0') salida += ' y ' + unidades[parseInt(n[2])];
-    }
-    return salida.trim();
-  }
-
-  function convertirNumero(numero) {
-    const padded = numero.toString().padStart(9, '0');
-    const millones = padded.substring(0, 3);
-    const miles = padded.substring(3, 6);
-    const cientos = padded.substring(6, 9);
-
-    let letras = '';
-
-    if (parseInt(millones) > 0) {
-      letras += (millones === '001') ? 'un millón ' : convertirGrupo(millones) + ' millones ';
-    }
-
-    if (parseInt(miles) > 0) {
-      letras += (miles === '001') ? 'mil ' : convertirGrupo(miles) + ' mil ';
-    }
-
-    if (parseInt(cientos) > 0) {
-      letras += convertirGrupo(cientos);
-    }
-
-    return letras.trim();
-  }
-
-  const partes = parseFloat(num).toFixed(2).split('.');
-  const entero = parseInt(partes[0]);
-  const centavos = partes[1];
-  if (entero === 0) return `Cero pesos ${centavos}/100 M.N.`;
-
-  const letras = convertirNumero(entero);
-  return letras.charAt(0).toUpperCase() + letras.slice(1) + ` pesos ${centavos}/100 M.N.`;
-}
+import { obtenerTextoSimuladoIA } from "../utils/plantillas_IA_simuladas"; // Ajuste de ruta para Next.js
 
 export default function Documentos() {
   const [datos, setDatos] = useState(null);
@@ -69,7 +17,6 @@ export default function Documentos() {
     let y = margin;
 
     const total = Object.values(datos?.montosPorMes || {}).reduce((acc, val) => acc + parseFloat(val || 0), 0);
-    const totalEnLetra = numeroALetras(total);
     const fecha = new Date(datos.fechaCFDI);
     const fechaTexto = fecha.toLocaleDateString("es-MX", {
       day: "2-digit",
@@ -81,7 +28,6 @@ export default function Documentos() {
 
     doc.setFontSize(14);
     doc.text("COTIZACIÓN DE SERVICIOS", 105, y, { align: "center" }); y += 2 * lineHeight;
-
     doc.setFontSize(11);
     doc.text(`Cliente: ${datos.receptor}`, margin, y);
     doc.text(`Fecha de emisión: ${fechaTexto}`, 200 - margin, y, { align: "right" });
@@ -103,7 +49,7 @@ export default function Documentos() {
     doc.setFont(undefined, "normal");
     doc.text(`${datos.descripcionCFDI}`, 105, y, { align: "center" }); y += lineHeight;
     doc.text(`$${total.toLocaleString("es-MX")}`, 105, y, { align: "center" }); y += lineHeight;
-    doc.text(`${totalEnLetra}`, 105, y, { align: "center" }); y += 2 * lineHeight;
+    doc.text(`${textoIA}`, 105, y, { align: "center" }); y += 2 * lineHeight;
 
     doc.save("cotizacion.pdf");
   };
