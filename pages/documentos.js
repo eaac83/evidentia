@@ -134,12 +134,11 @@ export default function Documentos() {
   };
 
   const manejarEditable = () => {
-    const aceptar = confirm(
-      "⚠️ La descarga del formato editable (Word) implica un cargo adicional de $58.00 MXN.
+    const aceptar = confirm(`
+      ⚠️ La descarga del formato editable (Word) implica un cargo adicional de $58.00 MXN.
 
-" +
-      "Se recomienda descargar el documento editable para personalizar con su logotipo o realizar ajustes internos."
-    );
+      Se recomienda descargar el documento editable para personalizar con su logotipo o realizar ajustes internos.
+`    );
     if (aceptar) generarDOCX();
   };
 
