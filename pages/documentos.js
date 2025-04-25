@@ -119,8 +119,7 @@ export default function Documentos() {
       sections: [{
         properties: {},
         children: [
-          ...textos[tipo].split("
-").map(p =>
+          ...textos[tipo].split("\n").map(p =>
             new Paragraph({ children: [new TextRun(p)] })
           )
         ]
