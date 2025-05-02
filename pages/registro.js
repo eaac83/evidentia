@@ -7,101 +7,100 @@ const Registro = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [terminos, setTerminos] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validación del correo y contraseñas
+    if (!email || !password || !confirmPassword) {
+      alert('Por favor, complete todos los campos obligatorios');
+      return;
+    }
+
     if (password !== confirmPassword) {
       alert('Las contraseñas no coinciden');
       return;
     }
 
-    if (!email || !password) {
-      alert('Por favor, complete todos los campos requeridos');
+    if (!terminos) {
+      alert('Debe aceptar los términos y condiciones');
       return;
     }
 
-    // Aquí deberías agregar la lógica para enviar los datos al backend
-
-    alert('Formulario enviado!');
-
-    // Aquí sería la lógica de redirección
-    // Redirigir a una página de confirmación o al siguiente paso
+    // Aquí puedes enviar al backend
+    alert('Registro enviado');
   };
 
   return (
-    <div className="registro-form max-w-2xl mx-auto bg-gray-800 p-6 rounded-xl mt-12">
-      <h2 className="text-center text-2xl font-semibold text-orange-400 mb-6">Formulario de Registro</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="email" className="block mb-1 text-gray-300">Correo Electrónico</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full p-3 rounded-lg bg-gray-700 text-white"
-          />
-        </div>
-        <div>
-          <label htmlFor="rfc" className="block mb-1 text-gray-300">RFC (Opcional)</label>
-          <input
-            type="text"
-            id="rfc"
-            name="rfc"
-            value={rfc}
-            onChange={(e) => setRfc(e.target.value)}
-            pattern="[A-Za-z]{3}[0-9]{2}[0-9]{2}[0-9]{2}[A-Za-z0-9]{3}"
-            title="Formato RFC válido"
-            className="w-full p-3 rounded-lg bg-gray-700 text-white"
-          />
-        </div>
-        <div>
-          <label htmlFor="password" className="block mb-1 text-gray-300">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="w-full p-3 rounded-lg bg-gray-700 text-white"
-          />
-        </div>
-        <div>
-          <label htmlFor="confirmar-password" className="block mb-1 text-gray-300">Confirmar Contraseña</label>
-          <input
-            type="password"
-            id="confirmar-password"
-            name="confirmar-password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-            className="w-full p-3 rounded-lg bg-gray-700 text-white"
-          />
-        </div>
-        <div>
-          <label htmlFor="terminos" className="inline-flex items-center text-gray-300">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 px-4">
+      <div className="w-full max-w-lg bg-white/5 backdrop-blur-md shadow-xl rounded-xl p-8">
+        <h2 className="text-3xl font-semibold text-center text-orange-400 mb-6">Formulario de Registro</h2>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label htmlFor="email" className="block mb-1 text-gray-200">Correo electrónico *</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full p-3 rounded-md bg-gray-700 text-white focus:ring-2 ring-orange-400"
+            />
+          </div>
+          <div>
+            <label htmlFor="rfc" className="block mb-1 text-gray-200">RFC (opcional)</label>
+            <input
+              type="text"
+              id="rfc"
+              value={rfc}
+              onChange={(e) => setRfc(e.target.value)}
+              pattern="[A-Za-z]{3,4}[0-9]{6}[A-Za-z0-9]{3}"
+              title="Formato RFC válido"
+              className="w-full p-3 rounded-md bg-gray-700 text-white"
+            />
+          </div>
+          <div>
+            <label htmlFor="password" className="block mb-1 text-gray-200">Contraseña *</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full p-3 rounded-md bg-gray-700 text-white"
+            />
+          </div>
+          <div>
+            <label htmlFor="confirmPassword" className="block mb-1 text-gray-200">Confirmar Contraseña *</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              className="w-full p-3 rounded-md bg-gray-700 text-white"
+            />
+          </div>
+          <div className="flex items-start gap-2">
             <input
               type="checkbox"
               id="terminos"
-              name="terminos"
               checked={terminos}
               onChange={() => setTerminos(!terminos)}
               required
-              className="mr-2"
+              className="mt-1"
             />
-            Acepto los <a href="/terminos-condiciones" className="text-blue-500">términos y condiciones</a>
-          </label>
-        </div>
-        <div className="flex justify-center">
-          <button type="submit" className="bg-orange-500 text-black font-semibold px-6 py-3 rounded-lg hover:bg-orange-400 transition disabled:opacity-50" disabled={!terminos}>
+            <label htmlFor="terminos" className="text-gray-300 text-sm">
+              Acepto los <a href="/terminos-condiciones" className="text-blue-400 underline">términos y condiciones</a>
+            </label>
+          </div>
+          <button
+            type="submit"
+            disabled={!terminos}
+            className="w-full bg-orange-500 hover:bg-orange-400 text-black font-semibold py-3 px-6 rounded-lg transition disabled:opacity-50"
+          >
             Registrar
           </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
