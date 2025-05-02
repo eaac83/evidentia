@@ -47,7 +47,7 @@ body { margin: 0; font-family: sans-serif; background-color: #0D1117; color: whi
 }
 
 .registro-form input:focus {
-  outline: 2px solid #ffa500;
+  outline: 2px solid #3b82f6;
 }
 
 /* Checkbox */
