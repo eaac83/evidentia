@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './globals.css'; // Asegúrate de tener este archivo
 
 const Registro = () => {
   const [email, setEmail] = useState('');
@@ -12,21 +11,22 @@ const Registro = () => {
     e.preventDefault();
 
     if (!email || !password || !confirmPassword) {
-      alert('Por favor, complete todos los campos obligatorios');
+      alert('Por favor completa los campos obligatorios.');
       return;
     }
 
     if (password !== confirmPassword) {
-      alert('Las contraseñas no coinciden');
+      alert('Las contraseñas no coinciden.');
       return;
     }
 
     if (!terminos) {
-      alert('Debe aceptar los términos y condiciones');
+      alert('Debes aceptar los términos y condiciones.');
       return;
     }
 
-    alert('Registro enviado');
+    alert('¡Registro enviado!');
+    // Aquí puedes agregar la lógica para enviar los datos al backend
   };
 
   return (
@@ -85,4 +85,3 @@ const Registro = () => {
 };
 
 export default Registro;
-
