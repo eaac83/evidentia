@@ -30,59 +30,74 @@ const Registro = () => {
   };
 
   return (
-    <div className="registro-form">
-      <h2>Formulario de Registro</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="registro-form max-w-2xl mx-auto bg-gray-800 p-6 rounded-xl mt-12">
+      <h2 className="text-center text-2xl font-semibold text-orange-400 mb-6">Formulario de Registro</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label>Correo Electrónico</label>
+          <label htmlFor="email" className="block mb-1 text-gray-300">Correo Electrónico</label>
           <input
             type="email"
+            id="email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className="w-full p-3 rounded-lg bg-gray-700 text-white"
           />
         </div>
         <div>
-          <label>RFC (Opcional)</label>
+          <label htmlFor="rfc" className="block mb-1 text-gray-300">RFC (Opcional)</label>
           <input
             type="text"
+            id="rfc"
+            name="rfc"
             value={rfc}
             onChange={(e) => setRfc(e.target.value)}
             pattern="[A-Za-z]{3}[0-9]{2}[0-9]{2}[0-9]{2}[A-Za-z0-9]{3}"
             title="Formato RFC válido"
+            className="w-full p-3 rounded-lg bg-gray-700 text-white"
           />
         </div>
         <div>
-          <label>Contraseña</label>
+          <label htmlFor="password" className="block mb-1 text-gray-300">Contraseña</label>
           <input
             type="password"
+            id="password"
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className="w-full p-3 rounded-lg bg-gray-700 text-white"
           />
         </div>
         <div>
-          <label>Confirmar Contraseña</label>
+          <label htmlFor="confirmar-password" className="block mb-1 text-gray-300">Confirmar Contraseña</label>
           <input
             type="password"
+            id="confirmar-password"
+            name="confirmar-password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            className="w-full p-3 rounded-lg bg-gray-700 text-white"
           />
         </div>
         <div>
-          <label>
+          <label htmlFor="terminos" className="inline-flex items-center text-gray-300">
             <input
               type="checkbox"
+              id="terminos"
+              name="terminos"
               checked={terminos}
               onChange={() => setTerminos(!terminos)}
               required
+              className="mr-2"
             />
-            Acepto los <a href="/terminos-condiciones">términos y condiciones</a>
+            Acepto los <a href="/terminos-condiciones" className="text-blue-500">términos y condiciones</a>
           </label>
         </div>
-        <div>
-          <button type="submit" disabled={!terminos}>
+        <div className="flex justify-center">
+          <button type="submit" className="bg-orange-500 text-black font-semibold px-6 py-3 rounded-lg hover:bg-orange-400 transition disabled:opacity-50" disabled={!terminos}>
             Registrar
           </button>
         </div>
@@ -92,4 +107,3 @@ const Registro = () => {
 };
 
 export default Registro;
-
