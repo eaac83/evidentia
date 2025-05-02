@@ -70,7 +70,7 @@ body { margin: 0; font-family: sans-serif; background-color: #0D1117; color: whi
 
 /* Botón */
 button[type="submit"] {
-  background-color: #ffa500;
+  background-color: #3b82f6;
   color: #000;
   border: none;
   padding: 0.8rem;
