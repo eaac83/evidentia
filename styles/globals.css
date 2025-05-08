@@ -69,7 +69,9 @@ body {
   font-size: 0.9rem;
   color: #1f3a63;
   margin-bottom: 1rem;
-  flex-wrap: wrap;
+  justify-content: center;
+  flex-wrap: nowrap;
+  text-align: center;
 }
 
 .registro-checkbox input {
