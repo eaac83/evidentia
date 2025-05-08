@@ -75,7 +75,7 @@ body {
 }
 
 .registro-checkbox a {
-  color: #f97316;
+  color: #1f3a63;
   text-decoration: none;
 }
 
@@ -86,7 +86,7 @@ body {
 /* Botón de envío */
 button[type="submit"] {
   width: 100%;
-  background-color: #f97316;
+  background-color: #1f3a63;
   color: white;
   font-weight: bold;
   border: none;
@@ -97,7 +97,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #fb923c;
+  background-color: #0ea5e9;
 }
 
 button[disabled] {
