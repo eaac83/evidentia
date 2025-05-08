@@ -76,14 +76,9 @@ useEffect(() => {
           />
 
           <div className="registro-checkbox">
-            <input
-              type="checkbox"
-              checked={terminos}
-              onChange={() => setTerminos(!terminos)}
-              required
-            />
-            <span>Acepto los <a href="/terminos-condiciones" target="_blank">términos y condiciones</a></span>
-          </div>
+  <input type="checkbox" ... />
+  <span>Acepto los <a href="/terminos-condiciones">términos y condiciones</a></span>
+</div>
 
           <button type="submit" disabled={!terminos}>Registrar</button>
         </form>
