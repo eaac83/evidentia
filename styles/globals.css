@@ -1,92 +1,106 @@
-body { margin: 0; font-family: sans-serif; background-color: #0D1117; color: white; }
-/* Estilo para el contenedor del formulario */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f3f4f6;
+  color: #1f3a63;
+}
+
+/* Contenedor principal del formulario */
 .registro-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  background-color: #f3f4f6;
 }
 
 /* Tarjeta del formulario */
 .registro-card {
-  background-color: #1f1f1f;
+  background: white;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  max-width: 400px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  max-width: 450px;
   width: 100%;
+  position: relative;
 }
 
 /* Título del formulario */
 .registro-title {
   text-align: center;
-  color: #3b82f6;
+  color: #1f3a63;
   margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
-/* Etiquetas e inputs */
+/* Estilos de los campos */
 .registro-form label {
   display: block;
-  margin-bottom: 0.5rem;
-  color: #ccc;
-  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #1f3a63;
 }
 
-.registro-form input[type="text"],
-.registro-form input[type="email"],
-.registro-form input[type="password"] {
+.registro-form input,
+.registro-form select,
+.registro-form textarea {
   width: 100%;
-  padding: 0.7rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
   border-radius: 6px;
-  border: none;
-  background-color: #2b2b2b;
-  color: #fff;
-  margin-bottom: 1.2rem;
+  border: 1px solid #cbd5e1;
   font-size: 1rem;
+  background-color: #fff;
+  color: #1f3a63;
 }
 
-.registro-form input:focus {
-  outline: 2px solid #3b82f6;
+.registro-form input:focus,
+.registro-form select:focus,
+.registro-form textarea:focus {
+  outline: 2px solid #0ea5e9;
 }
 
 /* Checkbox */
 .registro-checkbox {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
   font-size: 0.9rem;
-  color: #ccc;
+  color: #1f3a63;
+  margin-bottom: 1rem;
 }
 
-.registro-checkbox input[type="checkbox"] {
+.registro-checkbox input {
   margin-right: 0.5rem;
 }
 
 .registro-checkbox a {
-  color: #61dafb;
+  color: #f97316;
+  text-decoration: none;
+}
+
+.registro-checkbox a:hover {
   text-decoration: underline;
 }
 
-/* Botón */
+/* Botón de envío */
 button[type="submit"] {
-  background-color: #3b82f6;
-  color: #000;
-  border: none;
-  padding: 0.8rem;
   width: 100%;
-  font-size: 1rem;
+  background-color: #f97316;
+  color: white;
   font-weight: bold;
+  border: none;
   border-radius: 6px;
+  padding: 0.75rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-button[disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
+button[type="submit"]:hover {
+  background-color: #fb923c;
 }
 
-button[type="submit"]:hover:not([disabled]) {
-  background-color: #ffb933;
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
