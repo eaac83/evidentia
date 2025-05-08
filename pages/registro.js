@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Registro = () => {
   const [email, setEmail] = useState('');
@@ -6,7 +6,15 @@ const Registro = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [terminos, setTerminos] = useState(false);
-
+  
+useEffect(() => {
+    const disableRightClick = (e) => e.preventDefault();
+    document.addEventListener('contextmenu', disableRightClick);
+    return () => {
+      document.removeEventListener('contextmenu', disableRightClick);
+    };
+  }, []);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
