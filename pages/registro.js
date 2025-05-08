@@ -84,8 +84,11 @@ useEffect(() => {
     onChange={() => setTerminos(!terminos)}
     required
   />
-  <span>Acepto los <a href="/terminos-condiciones">términos y condiciones</a></span>
+  <label htmlFor="terminos">
+    Acepto los <a href="/terminos-condiciones">términos y condiciones</a>
+  </label>
 </div>
+
 
           <button type="submit" disabled={!terminos}>Registrar</button>
         </form>
