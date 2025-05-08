@@ -65,13 +65,15 @@ body {
 .registro-checkbox {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   font-size: 0.9rem;
   color: #1f3a63;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .registro-checkbox input {
-  margin-right: 0.5rem;
+  margin: 0;
 }
 
 .registro-checkbox a {
