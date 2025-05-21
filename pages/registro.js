@@ -102,7 +102,3 @@ const Registro = () => {
 };
 
 export default Registro;
-
-};
-
-export default Registro;
