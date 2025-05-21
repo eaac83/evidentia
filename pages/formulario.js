@@ -50,7 +50,6 @@ export default function Formulario() {
       <div className="registro-card">
         <h2 className="registro-title">📝 Solicitud de Evidencia y Soporte Documental</h2>
         <form onSubmit={handleSubmit} className="registro-form">
-
           <label>Tipo de documento</label>
           <select name="tipoDocumento" value={formData.tipoDocumento} onChange={handleChange}>
             <option value="CFDI">CFDI</option>
@@ -90,16 +89,19 @@ export default function Formulario() {
           <div className="meses-grid">
             {meses.map((mes) => (
               <label key={mes} htmlFor={mes} className="mes-label">
-  <input
-    type="checkbox"
-    id={mes}
-    checked={formData.mesesSeleccionados.includes(mes)}
-    onChange={() => toggleMes(mes)}
-    disabled={formData.tipoDocumento === "CFDI" && formData.mesesSeleccionados.length === 1 && !formData.mesesSeleccionados.includes(mes)}
-  />
-  {mes}
-</label>
-
+                <input
+                  type="checkbox"
+                  id={mes}
+                  checked={formData.mesesSeleccionados.includes(mes)}
+                  onChange={() => toggleMes(mes)}
+                  disabled={
+                    formData.tipoDocumento === "CFDI" &&
+                    formData.mesesSeleccionados.length === 1 &&
+                    !formData.mesesSeleccionados.includes(mes)
+                  }
+                />
+                {mes}
+              </label>
             ))}
           </div>
 
