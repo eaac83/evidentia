@@ -6,15 +6,16 @@ const Registro = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [terminos, setTerminos] = useState(false);
-  
-useEffect(() => {
+
+  useEffect(() => {
+    // Evitar clic derecho
     const disableRightClick = (e) => e.preventDefault();
     document.addEventListener('contextmenu', disableRightClick);
     return () => {
       document.removeEventListener('contextmenu', disableRightClick);
     };
   }, []);
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -76,24 +77,32 @@ useEffect(() => {
           />
 
           <div className="registro-checkbox">
-  <label className="registro-checkbox-wrapper">
-    <input
-      type="checkbox"
-      id="terminos"
-      name="terminos"
-      checked={terminos}
-      onChange={() => setTerminos(!terminos)}
-      required
-    />
-    <span>Acepto los <a href="/terminos-condiciones">términos y condiciones</a></span>
-  </label>
-</div>
+            <label className="registro-checkbox-wrapper">
+              <input
+                type="checkbox"
+                id="terminos"
+                name="terminos"
+                checked={terminos}
+                onChange={() => setTerminos(!terminos)}
+                required
+              />
+              <span>
+                Acepto los <a href="/terminos-condiciones" target="_blank">términos y condiciones</a>
+              </span>
+            </label>
+          </div>
 
-          <button type="submit" disabled={!terminos}>Registrar</button>
+          <button type="submit" disabled={!terminos}>
+            Registrar
+          </button>
         </form>
       </div>
     </div>
   );
+};
+
+export default Registro;
+
 };
 
 export default Registro;
