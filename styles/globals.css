@@ -402,6 +402,7 @@ footer {
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 10px;
   margin: 10px 0 20px 0;
+  max-width: 100%;
 }
 
 .meses-grid div {
