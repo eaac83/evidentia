@@ -1,3 +1,5 @@
+/* ===== RESET / GLOBALS ===== */
+* { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -5,7 +7,7 @@ body {
   color: #1f3a63;
 }
 
-/* Contenedor principal del formulario */
+/* ===== FORMULARIO: registro-container & registro-card ===== */
 .registro-container {
   min-height: 100vh;
   display: flex;
@@ -15,7 +17,6 @@ body {
   background-color: #f3f4f6;
 }
 
-/* Tarjeta del formulario */
 .registro-card {
   background: white;
   padding: 2rem;
@@ -26,7 +27,7 @@ body {
   position: relative;
 }
 
-/* Título del formulario */
+/* ===== FORMULARIO: etiquetas, inputs, botones ===== */
 .registro-title {
   text-align: center;
   color: #1f3a63;
@@ -34,7 +35,6 @@ body {
   font-size: 1.5rem;
 }
 
-/* Estilos de los campos */
 .registro-form label {
   display: block;
   margin-bottom: 0.3rem;
@@ -61,7 +61,6 @@ body {
   outline: 2px solid #0ea5e9;
 }
 
-/* Checkbox */
 .registro-checkbox {
   display: flex;
   align-items: center;
@@ -71,8 +70,6 @@ body {
   color: #1f3a63;
   margin-bottom: 1rem;
   text-align: left;
-  flex-direction: row;
-  flex-wrap: nowrap;
 }
 
 .registro-checkbox input {
@@ -88,7 +85,6 @@ body {
   text-decoration: underline;
 }
 
-/* Botón de envío */
 button[type="submit"] {
   width: 100%;
   background-color: #0ea5e9;
@@ -108,4 +104,295 @@ button[type="submit"]:hover {
 button[disabled] {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* ===== HEADER & NAV ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+header img {
+  height: 50px;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: #1f3a63;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+nav a:hover {
+  color: #0ea5e9;
+}
+
+nav .dropdown {
+  position: relative;
+}
+
+nav .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 0.5rem 0;
+  z-index: 1001;
+}
+
+nav .dropdown-content a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #1f3a63;
+}
+
+nav .dropdown-content a:hover {
+  background: #f0f4f8;
+  color: #0ea5e9;
+}
+
+nav .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ===== WATERMARK ===== */
+.watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.05;
+  width: 600px;
+  pointer-events: none;
+  filter: blur(1px);
+  z-index: 0;
+}
+
+/* ===== MAIN CONTENT ===== */
+main {
+  flex: 1;
+  padding-top: 100px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  background-color: #1f3a63;
+  color: white;
+  padding: 1.5rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.hero button {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+/* ===== CARD GRID ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.2rem;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* ===== MODAL CONTACTO ===== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+/* ===== POPUP SERVICIOS ===== */
+.popup-servicio {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border: 2px solid #0ea5e9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 9999;
+  max-width: 400px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+  position: relative;
+}
+
+.popup-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  opacity: 0.05;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.popup-descripcion {
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.popup-cerrar {
+  display: block;
+  margin: 2rem auto 0;
+  background: #0ea5e9;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #1f3a63;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  transition: transform 0.2s ease;
+}
+
+.social-icons a img {
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+  display: block;
+  filter: grayscale(100%) brightness(0) invert(0);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+  filter: brightness(1.5) sepia(1) hue-rotate(180deg) saturate(5);
+  transform: scale(1.1);
+}
+
+/* ===== IFRAME WRAPPER ===== */
+.iframe-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  height: calc(100vh - 180px); /* header + footer espacio */
+  box-sizing: border-box;
+  text-align: center;
+  flex-direction: column;
+}
+
+.iframe-wrapper iframe {
+  width: 100%;
+  max-width: 550px;
+  min-height: 700px; /* ajusta según tu contenido */
+  border: 1px solid #ccc;
+  border-radius: 12px;
 }
