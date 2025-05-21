@@ -399,7 +399,7 @@ footer {
 /* ===== css de formulario.js ===== */
 .meses-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas */
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   margin: 10px 0 20px 0;
   max-width: 100%;
@@ -419,4 +419,5 @@ footer {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%; /* 👈 ESTO FALTABA */
 }
