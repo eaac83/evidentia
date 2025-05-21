@@ -410,3 +410,13 @@ footer {
   gap: 8px;
   white-space: nowrap;
 }
+
+.mes-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-weight: 500;
+  color: #1f3a63;
+  cursor: pointer;
+}
