@@ -109,23 +109,19 @@ export default function Formulario() {
 
           {pantalla === 3 && (
             <>
-              <label>Selecciona los meses a justificar:</label>
+<label>Selecciona los meses a justificar:</label>
 <div className="meses-grid">
   {meses.map((mes) => (
-    <div key={mes}>
-      <label className="mes-label">
-        <input
-          type="checkbox"
-          checked={formData.mesesSeleccionados.includes(mes)}
-          onChange={() => toggleMes(mes)}
-        />
-        <span>{mes}</span>
-      </label>
-    </div>
+    <label key={mes} className="mes-label">
+      <input
+        type="checkbox"
+        checked={formData.mesesSeleccionados.includes(mes)}
+        onChange={() => toggleMes(mes)}
+      />
+      {mes}
+    </label>
   ))}
-</div>
-
-              <label>Notas adicionales (opcional)</label>
+</div>              <label>Notas adicionales (opcional)</label>
               <input name="notas" onChange={handleChange} />
 
               <div className="botones-formulario">
