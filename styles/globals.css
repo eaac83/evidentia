@@ -405,18 +405,10 @@ footer {
   width: 100%;
 }
 
-.meses-grid div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-}
-
 .mes-label {
   display: flex;
   align-items: center;
   gap: 6px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  max-width: 100%;
 }
