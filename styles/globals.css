@@ -399,12 +399,11 @@ footer {
 /* ===== css de formulario.js ===== */
 .meses-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas */
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 10px;
   margin: 10px 0 20px 0;
-  max-width: 100%;
+  width: 100%;
 }
-
 
 .meses-grid div {
   display: flex;
@@ -417,5 +416,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 6px;
-  white-space: nowrap; /* evita que se parta el texto */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
