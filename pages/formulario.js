@@ -118,7 +118,7 @@ export default function Formulario() {
         checked={formData.mesesSeleccionados.includes(mes)}
         onChange={() => toggleMes(mes)}
       />
-      {mes}
+      <span className="mes-nombre">{mes}</span>
     </label>
   ))}
 </div>              <label>Notas adicionales (opcional)</label>
