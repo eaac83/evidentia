@@ -413,4 +413,12 @@ footer {
   font-size: 0.95rem;
   color: #1f3a63;
   white-space: nowrap;
+  overflow: hidden;
+}
+
+.mes-nombre {
+  display: inline-block;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
