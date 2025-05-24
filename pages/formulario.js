@@ -136,7 +136,7 @@ export default function Formulario() {
   rows={2}
 />
               <div className="botones-formulario">
-                <<button type="button" className="btn-formulario" onClick={() => setPantalla(2)}>Atras</button>
+                <button type="button" className="btn-formulario" onClick={() => setPantalla(2)}>Atrás</button>
 
                 <button type="submit">
                   Enviar
