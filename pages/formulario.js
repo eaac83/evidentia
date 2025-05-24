@@ -26,9 +26,17 @@ export default function Formulario() {
   ];
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const { name, value } = e.target;
+
+  // Si es un textarea, autoajustar altura
+  if (e.target.tagName === "TEXTAREA") {
+    e.target.style.height = "auto"; // Reinicia altura
+    e.target.style.height = `${e.target.scrollHeight}px`; // Ajusta a contenido
+  }
+
+  setFormData({ ...formData, [name]: value });
+};
+
 
   const toggleMes = (mes) => {
     if (formData.tipoDocumento === "CFDI") {
