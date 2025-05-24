@@ -406,11 +406,12 @@ footer {
 }
 
 .mes-label {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row; /* fuerza que checkbox y texto estén en línea */
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
-  padding: 10px;
+  padding: 12px;
   font-size: 1rem;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -425,11 +426,11 @@ footer {
 .mes-label input[type="checkbox"] {
   flex-shrink: 0;
 }
+
 .mes-nombre {
   flex: 1;
   word-break: break-word;
 }
-
 
 /* ===== notas adicionales text area ===== */
 .registro-form textarea {
