@@ -101,6 +101,25 @@ button[type="submit"]:hover {
   background-color: #0ea5e9;
 }
 
+.btn-formulario {
+  width: 100%;
+  background-color: #0ea5e9;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  display: block;
+  margin-top: 1rem;
+}
+
+.btn-formulario:hover {
+  background-color: #0d99db;
+}
+
 button[disabled] {
   opacity: 0.6;
   cursor: not-allowed;
