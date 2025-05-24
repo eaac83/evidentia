@@ -399,28 +399,37 @@ footer {
 /* ===== css de formulario.js ===== */
 .meses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 12px;
   margin: 10px 0 20px 0;
   width: 100%;
 }
 
 .mes-label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 8px;
-  font-size: 1rem;
   padding: 10px;
+  font-size: 1rem;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background-color: #f9fafb;
   cursor: pointer;
+  width: 100%;
+  height: 100%;
   transition: background 0.2s ease;
+  box-sizing: border-box;
 }
 
-.mes-label:hover {
-  background-color: #e0f2fe;
+.mes-label input[type="checkbox"] {
+  flex-shrink: 0;
 }
+.mes-nombre {
+  flex: 1;
+  word-break: break-word;
+}
+
 
 /* ===== notas adicionales text area ===== */
 .registro-form textarea {
