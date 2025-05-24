@@ -399,17 +399,18 @@ footer {
 /* ===== css de formulario.js ===== */
 .meses-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Máximo 4 columnas */
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   margin: 10px 0 20px 0;
   width: 100%;
 }
 
-
 .mes-label {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 6px;
+  font-size: 0.95rem;
+  color: #1f3a63;
   white-space: nowrap;
-  max-width: 100%;
 }
