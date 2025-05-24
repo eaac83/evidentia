@@ -399,7 +399,7 @@ footer {
 /* ===== css de formulario.js ===== */
 .meses-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
   margin: 10px 0 20px 0;
   width: 100%;
@@ -413,8 +413,8 @@ footer {
   font-size: 0.95rem;
   color: #1f3a63;
   white-space: nowrap;
-  overflow: hidden;
 }
+
 
 .mes-nombre {
   display: inline-block;
