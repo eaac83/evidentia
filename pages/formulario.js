@@ -78,9 +78,8 @@ export default function Formulario() {
               <label>Correo o medio de contacto</label>
               <input name="contacto" required onChange={handleChange} />
 
-              <button type="button" onClick={() => setPantalla(2)}>
-                Siguiente
-              </button>
+              <button type="button" className="btn-formulario" onClick={() => setPantalla(2)}>Siguiente</button>
+
             </>
           )}
 
@@ -136,7 +135,6 @@ export default function Formulario() {
   onChange={handleChange}
   rows={2}
 />
-
               <div className="botones-formulario">
                 <button type="button" onClick={() => setPantalla(2)}>
                   Atrás
