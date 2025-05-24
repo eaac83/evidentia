@@ -399,8 +399,8 @@ footer {
 /* ===== css de formulario.js ===== */
 .meses-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* de 4 a 3 */
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
   margin: 10px 0 20px 0;
   width: 100%;
 }
@@ -412,12 +412,16 @@ footer {
   gap: 6px;
   font-size: 0.95rem;
   color: #1f3a63;
-  white-space: nowrap;
+  word-break: break-word;
+  padding: 6px 4px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #f9fafb;
 }
 
 .mes-nombre {
   display: inline-block;
-  max-width: 100px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
+
