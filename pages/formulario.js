@@ -110,24 +110,20 @@ export default function Formulario() {
           {pantalla === 3 && (
             <>
               <label>Selecciona los meses a justificar:</label>
-              <div className="meses-grid">
-                {meses.map((mes) => (
-                  <label key={mes} htmlFor={mes} className="mes-label">
-                    <input
-                      type="checkbox"
-                      id={mes}
-                      checked={formData.mesesSeleccionados.includes(mes)}
-                      onChange={() => toggleMes(mes)}
-                      disabled={
-                        formData.tipoDocumento === "CFDI" &&
-                        formData.mesesSeleccionados.length === 1 &&
-                        !formData.mesesSeleccionados.includes(mes)
-                      }
-                    />
-                    {mes}
-                  </label>
-                ))}
-              </div>
+<div className="meses-grid">
+  {meses.map((mes) => (
+    <div key={mes}>
+      <label className="mes-label">
+        <input
+          type="checkbox"
+          checked={formData.mesesSeleccionados.includes(mes)}
+          onChange={() => toggleMes(mes)}
+        />
+        <span>{mes}</span>
+      </label>
+    </div>
+  ))}
+</div>
 
               <label>Notas adicionales (opcional)</label>
               <input name="notas" onChange={handleChange} />
