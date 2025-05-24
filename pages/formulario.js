@@ -122,7 +122,12 @@ export default function Formulario() {
     </label>
   ))}
 </div>              <label>Notas adicionales (opcional)</label>
-              <input name="notas" onChange={handleChange} />
+<textarea
+  name="notas"
+  value={formData.notas}
+  onChange={handleChange}
+  rows={2}
+/>
 
               <div className="botones-formulario">
                 <button type="button" onClick={() => setPantalla(2)}>
