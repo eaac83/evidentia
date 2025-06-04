@@ -1,42 +1,68 @@
 import { useState, useEffect } from "react";
+import "../styles/documentos.css";  // Asegúrate que esta ruta coincida con donde pusiste el CSS
 
 export default function Documentos() {
   const [documentoSeleccionado, setDocumentoSeleccionado] = useState("Solicitud del servicio");
-  const [mostrarPopup, setMostrarPopup] = useState(false);
-  const [costoEditable, setCostoEditable] = useState(0);
+  const [data, setData] = useState(null);
+  const [documentosConfirmados, setDocumentosConfirmados] = useState({});
 
   useEffect(() => {
-    calcularCostoEditable();
+    const storedData = JSON.parse(localStorage.getItem("datosCompletos"));
+    setData(storedData);
   }, []);
 
-  const calcularCostoEditable = () => {
-    const servicioBase = 500;
-    const ivaServicio = servicioBase * 0.16;
-    const totalBase = servicioBase + ivaServicio;
-
-    const adicional = totalBase * 0.15;
-    const ivaAdicional = adicional * 0.16;
-    const totalAdicional = adicional + ivaAdicional;
-
-    setCostoEditable(totalAdicional);
+  const handleConfirmarDocumento = () => {
+    setDocumentosConfirmados((prev) => ({
+      ...prev,
+      [documentoSeleccionado]: true,
+    }));
+    alert("Contenido confirmado para: " + documentoSeleccionado);
   };
 
-  const handleDescargar = () => {
-    alert(`Simulación: Descarga normal de ${documentoSeleccionado}`);
-  };
+  const renderPrevisualizacion = () => {
+    if (!data) return <p>Cargando datos...</p>;
 
-  const handleDescargarEditable = () => {
-    setMostrarPopup(true);
-  };
+    switch (documentoSeleccionado) {
+      case "Solicitud del servicio":
+        return (
+          <div className="documento-container">
+            <div className="titulo-documento">SOLICITUD DE SERVICIOS</div>
+            <div className="fecha-documento">
+              {data.ciudadEmision || "Ciudad"}, {data.fechaCFDI}
+            </div>
 
-  const cerrarPopup = () => {
-    setMostrarPopup(false);
+            <div className="seccion">
+              <p>{data.receptor} Presente:</p>
+            </div>
+
+            <div className="seccion bloque-protegido">
+              Contenido protegido. Este documento será visible completamente al generar el expediente.
+            </div>
+
+            <div className="seccion">
+              <strong>Periodo estimado de ejecución:</strong> [fecha]
+            </div>
+
+            <div className="firmas">
+              <p>______________________________</p>
+              <p>{data.receptor}</p>
+            </div>
+          </div>
+        );
+
+      default:
+        return (
+          <div className="documento-container">
+            <p>No hay plantilla aún para este documento.</p>
+          </div>
+        );
+    }
   };
 
   return (
     <div className="registro-container">
       <div className="registro-card">
-        <h2 className="registro-title">📄 Generación de Documentos</h2>
+        <h2 className="registro-title">Previsualización de Documentos</h2>
 
         <div className="registro-form">
           <label>Selecciona el documento:</label>
@@ -52,37 +78,18 @@ export default function Documentos() {
             <option>Minuta mensual de entrega de resultados</option>
             <option>Evidencia documental final</option>
           </select>
+        </div>
 
-          <div style={{ marginTop: "20px", textAlign: "center" }}>
-            <button className="btn-formulario" onClick={handleDescargar}>
-              Descargar
-            </button>
-            <button
-              className="btn-formulario"
-              style={{ marginTop: "10px" }}
-              onClick={handleDescargarEditable}
-            >
-              Descargar Editable
-            </button>
-          </div>
+        <div style={{ marginTop: "20px" }}>
+          {renderPrevisualizacion()}
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
+          <button className="btn-formulario" onClick={handleConfirmarDocumento}>
+            Confirmar contenido
+          </button>
         </div>
       </div>
-
-      {mostrarPopup && (
-        <div className="modal active">
-          <div className="modal-content">
-            <h3>⚠️ Atención</h3>
-            <p>
-              La descarga editable de este documento tiene un costo adicional de: <strong>${costoEditable.toFixed(2)}</strong> pesos.
-            </p>
-            <p>¿Deseas continuar?</p>
-
-            <button className="popup-cerrar" onClick={cerrarPopup}>
-              Cerrar
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
