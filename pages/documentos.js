@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "../styles/documentos.css";  // Asegúrate que esta ruta coincida con donde pusiste el CSS
 
 export default function Documentos() {
   const [documentoSeleccionado, setDocumentoSeleccionado] = useState("Solicitud del servicio");
