@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { formatFecha } from '../utils/formatFecha';
 
 export default function Preview() {
   const [data, setData] = useState(null);
@@ -53,7 +54,7 @@ export default function Preview() {
                 {Object.entries(data.montosFechas).map(([mes, valores]) => (
                   <tr key={mes}>
                     <td style={{ padding: "8px" }}>{mes}</td>
-                    <td style={{ padding: "8px" }}>{valores.fecha}</td>
+                    <td style={{ padding: "8px" }}>{formatFecha(valores.fecha)}</td>
                     <td style={{ padding: "8px" }}>${valores.monto}</td>
                   </tr>
                 ))}
