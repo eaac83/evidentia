@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -7,35 +6,26 @@ export default function Preview() {
   const router = useRouter();
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("formularioDatos"));
+    const storedData = JSON.parse(localStorage.getItem("datosCompletos"));
     setData(storedData);
   }, []);
 
   if (!data) {
     return (
-      <div style={{ backgroundColor: '#0D1117', minHeight: '100vh', color: 'white', padding: '40px' }}>
-        <div style={{ maxWidth: '700px', margin: 'auto', textAlign: 'center' }}>
-          <h1 style={{ fontSize: '24px' }}>No hay datos disponibles que mostrar</h1>
+      <div className="registro-container">
+        <div className="registro-card">
+          <p>No hay datos disponibles que mostrar</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div style={{ backgroundColor: '#0D1117', minHeight: '100vh', color: 'white', padding: '40px' }}>
-      <div style={{
-        maxWidth: '800px',
-        margin: 'auto',
-        backgroundColor: '#1F2937',
-        padding: '30px',
-        borderRadius: '12px',
-        boxShadow: '0 0 10px rgba(0,0,0,0.4)'
-      }}>
-        <h1 style={{ fontSize: '24px', marginBottom: '20px', textAlign: 'center' }}>
-          🧾 Resumen de la Solicitud
-        </h1>
+    <div className="registro-container">
+      <div className="registro-card">
+        <h2 className="registro-title">🧾 Resumen de la Solicitud</h2>
 
-        <div style={{ marginBottom: '20px' }}>
+        <div className="registro-form">
           <h3>📌 Información General:</h3>
           <p><strong>Tipo de Documento:</strong> {data.tipoDocumento}</p>
           <p><strong>Razón Social (Receptor):</strong> {data.receptor}</p>
@@ -48,50 +38,41 @@ export default function Preview() {
           <p><strong>Descripción del CFDI:</strong> {data.descripcionCFDI}</p>
         </div>
 
-        <div style={{ marginBottom: '20px' }}>
+        <div className="registro-form" style={{ marginTop: '20px' }}>
           <h3>📆 Detalle por Mes:</h3>
-          {data.mesesSeleccionados && data.mesesSeleccionados.length > 0 ? (
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}>
+          {data.montosFechas ? (
+            <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "10px" }}>
               <thead>
-                <tr style={{ borderBottom: '1px solid #374151' }}>
-                  <th style={{ textAlign: 'left', padding: '8px' }}>Mes</th>
-                  <th style={{ textAlign: 'left', padding: '8px' }}>Fecha del CFDI</th>
-                  <th style={{ textAlign: 'left', padding: '8px' }}>Monto</th>
+                <tr>
+                  <th style={{ textAlign: "left", padding: "8px" }}>Mes</th>
+                  <th style={{ textAlign: "left", padding: "8px" }}>Fecha</th>
+                  <th style={{ textAlign: "left", padding: "8px" }}>Monto</th>
                 </tr>
               </thead>
               <tbody>
-                {data.mesesSeleccionados.map((mes) => (
+                {Object.entries(data.montosFechas).map(([mes, valores]) => (
                   <tr key={mes}>
-                    <td style={{ padding: '8px' }}>{mes}</td>
-                    <td style={{ padding: '8px' }}>{data.fechasPorMes?.[mes] || '—'}</td>
-                    <td style={{ padding: '8px' }}>${data.montosPorMes?.[mes] || '0.00'}</td>
+                    <td style={{ padding: "8px" }}>{mes}</td>
+                    <td style={{ padding: "8px" }}>{valores.fecha}</td>
+                    <td style={{ padding: "8px" }}>${valores.monto}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           ) : (
-            <p>No se seleccionaron meses.</p>
+            <p>No hay montos capturados.</p>
           )}
         </div>
 
-        <div style={{ marginBottom: '20px' }}>
+        <div className="registro-form" style={{ marginTop: '20px' }}>
           <h3>📝 Notas adicionales:</h3>
           <p>{data.notas || 'Ninguna'}</p>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
           <button
             onClick={() => router.push("/documentos")}
-            style={{
-              padding: '12px 20px',
-              backgroundColor: '#93C5FD',
-              color: '#000',
-              fontWeight: 'bold',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              fontSize: '16px'
-            }}
+            className="btn-formulario"
           >
             Continuar a documentos finales
           </button>
