@@ -61,27 +61,30 @@ export default function Formulario() {
         <h2 className="registro-title">📝 Solicitud de Evidencia y Soporte Documental</h2>
         <form onSubmit={handleSubmit} className="registro-form">
 
-          {pantalla === 1 && (
-            <>
-              <label>Tipo de documento</label>
-              <select name="tipoDocumento" value={formData.tipoDocumento} onChange={handleChange}>
-                <option value="CFDI">CFDI</option>
-                <option value="Contrato">Contrato</option>
-              </select>
+         {pantalla === 1 && (
+  <>
+    <label>Tipo de documento</label>
+    <select name="tipoDocumento" value={formData.tipoDocumento} onChange={handleChange}>
+      <option value="CFDI">CFDI</option>
+      <option value="Contrato">Contrato</option>
+    </select>
 
-              <label>Razón social del receptor</label>
-              <input name="receptor" required onChange={handleChange} />
+    <label>Razón social del receptor</label>
+    <input name="receptor" required onChange={handleChange} />
 
-              <label>Actividad principal o giro (opcional)</label>
-              <input name="actividad" onChange={handleChange} />
+    <label>Actividad principal o giro (opcional)</label>
+    <input name="actividad" onChange={handleChange} />
 
-              <label>Correo o medio de contacto</label>
-              <input name="contacto" required onChange={handleChange} />
+    <label>Ciudad del proveedor</label>  {/* 🔧 NUEVO CAMPO */}
+    <input name="ciudad" required onChange={handleChange} />
 
-              <button type="button" className="btn-formulario" onClick={() => setPantalla(2)}>Siguiente</button>
+    <label>Correo o medio de contacto</label>
+    <input name="contacto" required onChange={handleChange} />
 
-            </>
-          )}
+    <button type="button" className="btn-formulario" onClick={() => setPantalla(2)}>Siguiente</button>
+  </>
+)}
+
 
           {pantalla === 2 && (
             <>
