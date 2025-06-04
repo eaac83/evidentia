@@ -1,58 +1,92 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Montos() {
   const router = useRouter();
   const [formData, setFormData] = useState(null);
-  const [montos, setMontos] = useState({});
+  const [montosFechas, setMontosFechas] = useState({});
+  const [fechaLimite, setFechaLimite] = useState("");
 
   useEffect(() => {
     const storedData = localStorage.getItem("formularioDatos");
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       setFormData(parsedData);
+      setFechaLimite(parsedData.fechaCFDI);
 
-      const initialMontos = {};
-      parsedData.mesesSeleccionados.forEach(mes => {
-        initialMontos[mes] = "";
+      const inicial = {};
+      parsedData.mesesSeleccionados.forEach((mes) => {
+        inicial[mes] = { monto: "", fecha: "" };
       });
-      setMontos(initialMontos);
+      setMontosFechas(inicial);
     }
   }, []);
 
-  const handleChange = (mes, value) => {
-    setMontos(prevMontos => ({ ...prevMontos, [mes]: value }));
+  const handleMontoChange = (mes, value) => {
+    const numericValue = value.replace(/[^0-9]/g, "");
+    const formatted = new Intl.NumberFormat("es-MX").format(numericValue);
+    setMontosFechas((prev) => ({
+      ...prev,
+      [mes]: { ...prev[mes], monto: formatted },
+    }));
+  };
+
+  const handleFechaChange = (mes, value) => {
+    setMontosFechas((prev) => ({
+      ...prev,
+      [mes]: { ...prev[mes], fecha: value },
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const datosCompletos = { ...formData, montos };
-    console.log("Datos completos:", datosCompletos);
+    const datosCompletos = { ...formData, montosFechas };
     localStorage.setItem("datosCompletos", JSON.stringify(datosCompletos));
-    router.push("/gpt");
+    router.push("/preview");
   };
 
-  if (!formData) return <div className="registro-container"><div className="registro-card"><p>Cargando datos...</p></div></div>;
+  if (!formData)
+    return (
+      <div className="registro-container">
+        <div className="registro-card">
+          <p>Cargando datos...</p>
+        </div>
+      </div>
+    );
 
   return (
     <div className="registro-container">
       <div className="registro-card">
-        <h2 className="registro-title">📝 Registro de Montos por Mes</h2>
+        <h2 className="registro-title">📝 Registro de Montos y Fechas</h2>
         <form onSubmit={handleSubmit} className="registro-form">
-          {formData.mesesSeleccionados.map(mes => (
+          {formData.mesesSeleccionados.map((mes) => (
             <div key={mes}>
-              <label htmlFor={mes}>Monto para {mes}:</label>
+              <label htmlFor={`monto-${mes}`}>Monto para {mes}:</label>
               <input
-                type="number"
-                id={mes}
-                name={mes}
-                value={montos[mes]}
-                onChange={(e) => handleChange(mes, e.target.value)}
+                type="text"
+                id={`monto-${mes}`}
+                value={montosFechas[mes].monto}
+                onChange={(e) => handleMontoChange(mes, e.target.value)}
+                required
+              />
+
+              <label htmlFor={`fecha-${mes}`}>
+                Fecha de servicio para {mes}:
+              </label>
+              <input
+                type="date"
+                id={`fecha-${mes}`}
+                value={montosFechas[mes].fecha}
+                onChange={(e) => handleFechaChange(mes, e.target.value)}
+                max={fechaLimite}
                 required
               />
             </div>
           ))}
-          <button type="submit" className="btn-formulario">Continuar</button>
+
+          <button type="submit" className="btn-formulario">
+            Continuar
+          </button>
         </form>
       </div>
     </div>
