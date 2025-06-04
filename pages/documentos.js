@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { formatFecha } from '../utils/formatFecha';
 
 export default function Documentos() {
   const [documentoSeleccionado, setDocumentoSeleccionado] = useState("Solicitud del servicio");
