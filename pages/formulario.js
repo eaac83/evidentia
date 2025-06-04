@@ -75,9 +75,6 @@ export default function Formulario() {
     <label>Actividad principal o giro (opcional)</label>
     <input name="actividad" onChange={handleChange} />
 
-    <label>Ciudad del proveedor</label>  {/* 🔧 NUEVO CAMPO */}
-    <input name="ciudad" required onChange={handleChange} />
-
     <label>Correo o medio de contacto</label>
     <input name="contacto" required onChange={handleChange} />
 
@@ -93,6 +90,11 @@ export default function Formulario() {
 
               <label>RFC del proveedor</label>
               <input name="rfcProveedor" required onChange={handleChange} />
+            
+            <label>Ciudad del proveedor</label>  {/* 🔧 NUEVO CAMPO */}
+            <input name="ciudad" required onChange={handleChange} />
+
+    
 
               <label>Código SAT del servicio</label>
               <input name="codigoSAT" required onChange={handleChange} />
