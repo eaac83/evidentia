@@ -11,12 +11,15 @@ export default function Montos() {
     const storedData = localStorage.getItem("formularioDatos");
     if (storedData) {
       const parsedData = JSON.parse(storedData);
-      setFormData(parsedData);
+      setFormData(parsededData);
       setFechaLimite(parsedData.fechaCFDI);
 
       const inicial = {};
       parsedData.mesesSeleccionados.forEach((mes) => {
-        inicial[mes] = { monto: "", fecha: "" };
+        inicial[mes] = {
+          monto: "",
+          fecha: parsedData.tipoDocumento === "CFDI" ? parsedData.fechaCFDI : ""
+        };
       });
       setMontosFechas(inicial);
     }
@@ -27,14 +30,14 @@ export default function Montos() {
     const formatted = new Intl.NumberFormat("es-MX").format(numericValue);
     setMontosFechas((prev) => ({
       ...prev,
-      [mes]: { ...prev[mes], monto: formatted },
+      [mes]: { ...prev[mes], monto: formatted }
     }));
   };
 
   const handleFechaChange = (mes, value) => {
     setMontosFechas((prev) => ({
       ...prev,
-      [mes]: { ...prev[mes], fecha: value },
+      [mes]: { ...prev[mes], fecha: value }
     }));
   };
 
