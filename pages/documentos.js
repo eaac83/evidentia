@@ -10,6 +10,13 @@ export default function Documentos() {
     setData(storedData);
   }, []);
 
+  const formatFecha = (fecha) => {
+  if (!fecha) return "";
+  const partes = fecha.split("-");
+  return `${partes[2]}/${partes[1]}/${partes[0]}`;
+};
+
+  
   const handleConfirmarDocumento = () => {
     setDocumentosConfirmados((prev) => ({
       ...prev,
@@ -27,7 +34,7 @@ export default function Documentos() {
           <div className="documento-container">
             <div className="titulo-documento">SOLICITUD DE SERVICIOS</div>
             <div className="fecha-documento">
-              {data.ciudadEmision || "Ciudad"}, {data.fechaCFDI}
+              {data.ciudad || "Ciudad"}, {data.fechaCFDI}
             </div>
 
             <div className="seccion">
