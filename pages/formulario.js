@@ -78,7 +78,9 @@ export default function Formulario() {
               <label>Correo o medio de contacto</label>
               <input name="contacto" required onChange={handleChange} />
 
-              <button type="button" className="btn-formulario" onClick={() => setPantalla(2)}>Siguiente</button>
+              <button type="button" className="btn-formulario" onClick={() => setPantalla(2)}>Atrás</button>
+              <button type="submit">Enviar</button>
+
 
             </>
           )}
