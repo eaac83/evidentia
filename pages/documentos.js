@@ -35,7 +35,7 @@ export default function Documentos() {
           <div className="documento-container">
             <div className="titulo-documento">SOLICITUD DE SERVICIOS</div>
             <div className="fecha-documento">
-              {data.ciudad || "Ciudad"}, {formatfecha(data.fechaCFDI)}
+              {data.ciudad || "Ciudad"}, {formatFecha(data.fechaCFDI)}
             </div>
 
             <div className="seccion">
