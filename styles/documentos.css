@@ -1,1 +1,67 @@
+body {
+  background-color: #f3f4f6;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.documento-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.titulo-documento {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.fecha-documento {
+  text-align: right;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.seccion {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.seccion strong {
+  color: #1f3a63;
+}
+
+.firmas {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.firmas p {
+  margin: 0.5rem 0;
+}
+
+.bloque-protegido {
+  background-color: #f0f0f0;
+  color: #999;
+  font-style: italic;
+  padding: 1rem;
+  border: 1px dashed #ccc;
+  text-align: center;
+}
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  pointer-events: auto;
+}
 
