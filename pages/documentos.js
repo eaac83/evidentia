@@ -1,24 +1,28 @@
 import { useState, useEffect } from "react";
 
 export default function Documentos() {
-  const [documentoSeleccionado, setDocumentoSeleccionado] = useState("Solicitud de Servicios");
+  const [documentoSeleccionado, setDocumentoSeleccionado] = useState("Solicitud del servicio");
   const [mostrarPopup, setMostrarPopup] = useState(false);
-  const [montoEditable, setMontoEditable] = useState(0);
+  const [costoEditable, setCostoEditable] = useState(0);
 
   useEffect(() => {
-    calcularMontoEditable();
+    calcularCostoEditable();
   }, []);
 
-  const calcularMontoEditable = () => {
+  const calcularCostoEditable = () => {
     const servicioBase = 500;
-    const iva = servicioBase * 0.16;
-    const extra = servicioBase * 0.15;
-    const total = servicioBase + iva + extra;
-    setMontoEditable(total);
+    const ivaServicio = servicioBase * 0.16;
+    const totalBase = servicioBase + ivaServicio;
+
+    const adicional = totalBase * 0.15;
+    const ivaAdicional = adicional * 0.16;
+    const totalAdicional = adicional + ivaAdicional;
+
+    setCostoEditable(totalAdicional);
   };
 
   const handleDescargar = () => {
-    alert("Simulación: Descargar documento normal");
+    alert(`Simulación: Descarga normal de ${documentoSeleccionado}`);
   };
 
   const handleDescargarEditable = () => {
@@ -41,12 +45,12 @@ export default function Documentos() {
             value={documentoSeleccionado}
             onChange={(e) => setDocumentoSeleccionado(e.target.value)}
           >
-            <option>Solicitud de Servicios</option>
-            <option>Contrato de Prestación</option>
-            <option>Soporte de Materialidad</option>
-            <option>Check List Documental</option>
-            <option>Certificación de Materialidad</option>
-            <option>Expediente del Servicio</option>
+            <option>Solicitud del servicio</option>
+            <option>Cotización del servicio</option>
+            <option>Aceptación del servicio</option>
+            <option>Plan de trabajo</option>
+            <option>Minuta mensual de entrega de resultados</option>
+            <option>Evidencia documental final</option>
           </select>
 
           <div style={{ marginTop: "20px", textAlign: "center" }}>
@@ -69,7 +73,7 @@ export default function Documentos() {
           <div className="modal-content">
             <h3>⚠️ Atención</h3>
             <p>
-              La descarga en formato editable tiene un costo adicional de <strong>${montoEditable.toFixed(2)}</strong> pesos ya con IVA y cargos incluidos.
+              La descarga editable de este documento tiene un costo adicional de: <strong>${costoEditable.toFixed(2)}</strong> pesos.
             </p>
             <p>¿Deseas continuar?</p>
 
