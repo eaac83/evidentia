@@ -11,7 +11,7 @@ export default function Montos() {
     const storedData = localStorage.getItem("formularioDatos");
     if (storedData) {
       const parsedData = JSON.parse(storedData);
-      setFormData(parsededData);
+      setFormData(parsedData);
       setFechaLimite(parsedData.fechaCFDI);
 
       const inicial = {};
